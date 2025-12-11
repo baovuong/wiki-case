@@ -13,3 +13,5 @@ CMakeUserPresets.json
 build
 
 wiki-case
+.cache
+src/gresource.c
