@@ -1,0 +1,38 @@
+<interface>
+  <object id="window" class="GtkWindow">
+    <property name="visible">True</property>
+    <property name="title">Wiki Case</property>
+    <property name="border-width">10</property>
+    <child>
+      <object id="vbox" class="GtkBox">
+        <property name="visible">True</property>
+        <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+        <child>
+          <object id="button1" class="GtkButton">
+            <property name="visible">True</property>
+            <property name="label">Button uwu</property>
+          </object>
+        </child>
+        <child>
+          <object id="nav-area" class="GtkBox">
+            <property name="visible">True</property>
+            <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+            <child>
+              <object id="navigationTreeView" class="GtkTreeView">
+              </object>
+            </child>
+            <child>
+              <object id="contentTextView" class="GtkTextView">
+                <property name="monospace">true</property>
+                <property name="wrap-mode">word</property>
+                <style>
+                  <class name="text-view-framed"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

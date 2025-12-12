@@ -15,3 +15,7 @@ build
 wiki-case
 .cache
 src/gresource.c
+src/gresource.h
+bin
+
+.vscode

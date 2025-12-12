@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/org/gtk/Example">
-    <file compressed="true">builder.ui</file>
+    <file compressed="true">res/builder.ui</file>
   </gresource>
 </gresources>
