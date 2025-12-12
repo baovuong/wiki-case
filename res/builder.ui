@@ -1,36 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.40.0 -->
 <interface>
-  <object id="window" class="GtkWindow">
+  <requires lib="gtk+" version="3.0"/>
+  <object class="GtkWindow" id="window">
+    <property name="width-request">640</property>
+    <property name="height-request">480</property>
     <property name="visible">True</property>
+    <property name="can-focus">False</property>
     <property name="title">Wiki Case</property>
-    <property name="border-width">10</property>
     <child>
-      <object id="vbox" class="GtkBox">
+      <object class="GtkBox">
         <property name="visible">True</property>
-        <property name="orientation">GTK_ORIENTATION_VERTICAL</property>
+        <property name="can-focus">False</property>
+        <property name="hexpand">True</property>
+        <property name="vexpand">True</property>
+        <property name="orientation">vertical</property>
         <child>
-          <object id="button1" class="GtkButton">
+          <object class="GtkBox">
             <property name="visible">True</property>
-            <property name="label">Button uwu</property>
+            <property name="can-focus">False</property>
+            <child>
+              <object class="GtkButton" id="back-button">
+                <property name="label" translatable="yes">Back</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="forward-button">
+                <property name="label" translatable="yes">Forward</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkEntry" id="search-entry">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="hexpand">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="search-button">
+                <property name="label" translatable="yes">Search</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="receives-default">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
           </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
         </child>
         <child>
-          <object id="nav-area" class="GtkBox">
+          <object class="GtkPaned">
             <property name="visible">True</property>
-            <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+            <property name="can-focus">True</property>
             <child>
-              <object id="navigationTreeView" class="GtkTreeView">
+              <object class="GtkTreeView" id="nav-tree-view">
+                <property name="width-request">100</property>
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <child internal-child="selection">
+                  <object class="GtkTreeSelection"/>
+                </child>
               </object>
+              <packing>
+                <property name="resize">False</property>
+                <property name="shrink">True</property>
+              </packing>
             </child>
             <child>
-              <object id="contentTextView" class="GtkTextView">
-                <property name="monospace">true</property>
-                <property name="wrap-mode">word</property>
-                <style>
-                  <class name="text-view-framed"/>
-                </style>
+              <object class="GtkTextView" id="content-text-view">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+                <property name="editable">False</property>
               </object>
+              <packing>
+                <property name="resize">True</property>
+                <property name="shrink">True</property>
+              </packing>
             </child>
           </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
         </child>
       </object>
     </child>

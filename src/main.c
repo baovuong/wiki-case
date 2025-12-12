@@ -10,6 +10,22 @@ static void print_hello(GtkWidget *widget, gpointer data)
     g_print("Hello, World\n");
 }
 
+static void search(GtkWidget *widget, gpointer data)
+{
+    // get search string
+    g_print("Searching\n");
+}
+
+static void back(GtkWidget *widget, gpointer data)
+{
+    g_print("Going Back\n");
+}
+
+static void forward(GtkWidget *widget, gpointer data)
+{
+    g_print("Going Forward\n");
+}
+
 int main(int argc, char **argv)
 {
     GtkApplication *app;
@@ -24,17 +40,12 @@ int main(int argc, char **argv)
 
     gtk_init(&argc, &argv);
 
-    g_print("wow\n");
     resource = wiki_case_get_resource();
 
-
-    g_print("resource loaded\n");
     builder = gtk_builder_new();
 
     // builder data
     builder_data = g_resource_lookup_data(resource, "/org/gtk/Example/res/builder.ui", G_RESOURCE_LOOKUP_FLAGS_NONE, &error);
-
-    g_print("builder loaded\n");
 
     if (gtk_builder_add_from_string(builder, 
         g_bytes_get_data(builder_data, NULL), 
@@ -51,10 +62,16 @@ int main(int argc, char **argv)
     g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
 
     // buttons 
-    button = gtk_builder_get_object(builder, "button1");
-    g_signal_connect(button, "clicked", G_CALLBACK(print_hello), NULL);
+    button = gtk_builder_get_object(builder, "search-button");
+    g_signal_connect(button, "clicked", G_CALLBACK(search), NULL);
 
-    textView = GTK_TEXT_VIEW(gtk_builder_get_object(builder, "contentTextView"));
+    button = gtk_builder_get_object(builder, "back-button");
+    g_signal_connect(button, "clicked", G_CALLBACK(back), NULL);
+
+    button = gtk_builder_get_object(builder, "forward-button");
+    g_signal_connect(button, "clicked", G_CALLBACK(forward), NULL);
+
+    textView = GTK_TEXT_VIEW(gtk_builder_get_object(builder, "content-text-view"));
     buffer = gtk_text_view_get_buffer(textView);
 
     gtk_text_buffer_set_text(buffer, "LMAO", 4);

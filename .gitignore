@@ -19,3 +19,5 @@ src/gresource.h
 bin
 
 .vscode
+
+*.ui~
