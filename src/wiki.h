@@ -59,4 +59,6 @@ typedef struct wiki_article {
     property_t *properties
 } wiki_article_t;
 
+wiki_article_t get_wiki_article_from_json(const char* value);
+
 #endif
