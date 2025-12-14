@@ -4,14 +4,16 @@ project(wiki-case C) # Replace MyGtkApp with your project name
 # Find the PkgConfig module
 find_package(PkgConfig REQUIRED)
 
-# Check for GTK3
+# Check for modules
 pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
+pkg_check_modules(JSON_GLIB_DEPS REQUIRED IMPORTED_TARGET json-glib-1.0)
+pkg_check_modules(LIBSOUP REQUIRED libsoup-3.0)
 
-# Include GTK3 headers
-include_directories(${GTK3_INCLUDE_DIRS})
+# Include headers
+include_directories(${GTK3_INCLUDE_DIRS} ${JSON_GLIB_DEPS_INCLUDE_DIRS} ${LIBSOUP_INCLUDE_DIRS})
 
-# Link GTK3 libraries
-link_directories(${GTK3_LIBRARY_DIRS})
+# Link libraries
+link_directories(${GTK3_LIBRARY_DIRS} ${JSON_GLIB_DEPS_LIBRARY_DIRS} ${LIBSOUP_LIBRARY_DIRS})
 
 # Add other compiler flags if necessary
 add_definitions(${GTK3_CFLAGS_OTHER})
@@ -68,6 +70,7 @@ add_custom_target(
 # Define your source files
 set(SOURCE_FILES
     src/main.c
+    src/wiki.c
     # Add other .c files here
 )
 
@@ -84,4 +87,5 @@ set_source_files_properties(
 add_dependencies(${PROJECT_NAME} dummy-resource)
 
 # Link the GTK3 libraries to your executable
-target_link_libraries(${PROJECT_NAME} ${GTK3_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} 
+    ${GTK3_LIBRARIES} ${JSON_GLIB_DEPS_LIBRARIES} ${LIBSOUP_LIBRARIES})
