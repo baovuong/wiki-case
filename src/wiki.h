@@ -1,64 +1,68 @@
 #ifndef __WIKI_wiki_case_H__
 #define __WIKI_wiki_case_H__
 
-typedef struct lang_link {
-    char* lang,
-    char* url,
-    char* autonym,
-    char* asterisk
-} lang_link_t;
+#include <glib.h>
 
-typedef struct category {
-    char* sort_key,
-    bool is_hidden,
-    char* asterisk
-} category_t;
+typedef struct _LangLink {
+    GString* lang;
+    GString* url;
+    GString* autonym;
+    GString* asterisk;
+} LangLink;
 
-typedef struct link {
-    int ns,
-    bool exists,
-    char* asterisk
-} link_t;
+typedef struct _Category {
+    GString* sort_key;
+    gboolean is_hidden;
+    GString* asterisk;
+} Category;
 
-typedef struct template {
-    int ns,
-    bool exists,
-    char* asterisk
-} template_t;
+typedef struct _Link {
+    gint ns;
+    gboolean exists;
+    GString* asterisk;
+} Link;
 
-typedef struct section {
-    int toc_level,
-    int level,
-    char* line,
-    int number,
-    int index,
-    char* from_title,
-    int byte_offset,
-    char* anchor,
-    char* linkAnchor
-} section_t;
+typedef struct _Template {
+    gint ns;
+    gboolean exists;
+    GString* asterisk;
+} Template;
 
-typedef struct property {
-    char* name,
-    char* asterisk
-} property_t;
+typedef struct _Section {
+    gint toc_level;
+    gint level;
+    GString* line;
+    gint number;
+    gint index;
+    GString* from_title;
+    gint byte_offset;
+    GString* anchor;
+    GString* linkAnchor;
+} Section;
 
-typedef struct wiki_article {
-    char* title,
-    int page_id,
-    int rev_id,
-    char *text,
-    lang_link_t *lang_links,
-    category_t *categories,
-    link_t *links,
-    template_t *templates,
-    char* *images,
-    char* *external_links,
-    section_t *sections,
-    char* display_title,
-    property_t *properties
-} wiki_article_t;
+typedef struct _Property {
+    GString* name;
+    GString* asterisk;
+} Property;
 
-wiki_article_t get_wiki_article_from_json(const char* value);
+typedef struct _WikiArticle {
+    GString* title;
+    gint page_id;
+    gint rev_id;
+    GString* text;
+    LangLink *lang_links;
+    Category *categories;
+    Link *links;
+    Template *templates;
+    GString* *images;
+    GString* *external_links;
+    Section *sections;
+    GString* display_title;
+    Property *properties;
+} WikiArticle;
+
+extern WikiArticle* wiki_article_new();
+extern WikiArticle* wiki_article_new_from_json(const char* json_string);
+extern void wiki_article_free(WikiArticle* wiki_article);
 
 #endif

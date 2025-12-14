@@ -1,6 +1,6 @@
-#include "gio/gio.h"
-#include "glib-object.h"
-#include "glib.h"
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
 #include <gtk/gtk.h>
 
 #include "gresource.h"
