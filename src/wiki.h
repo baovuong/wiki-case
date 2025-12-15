@@ -61,6 +61,7 @@ typedef struct _WikiArticle {
     Property *properties;
 } WikiArticle;
 
+// methods for wiki article
 extern WikiArticle* wiki_article_new();
 extern WikiArticle* wiki_article_new_from_json(const char* json_string);
 extern void wiki_article_free(WikiArticle* wiki_article);
