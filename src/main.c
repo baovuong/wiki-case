@@ -26,6 +26,7 @@ static void search(GtkWidget *widget, gpointer data)
     GtkEntryBuffer* buffer = gtk_entry_get_buffer(payload->entry);
 
     if (gtk_entry_buffer_get_length(buffer) < 1) {
+        g_print("Empty\n");
         return;
     }
 
@@ -38,8 +39,16 @@ static void search(GtkWidget *widget, gpointer data)
     {
         GString* search_result_entry = g_string_new(gtk_entry_buffer_get_text(buffer));
         g_string_append(search_result_entry, g_strdup_printf(" %d", i));
-        gtk_list_box_prepend(listBox, gtk_label_new(search_result_entry->str));
-        g_string_free(search_result_entry, TRUE);
+
+        g_print("adding %s\n", search_result_entry->str);
+
+        GtkLabel* label = GTK_LABEL(gtk_label_new(search_result_entry->str));
+
+        GtkListBoxRow *row = GTK_LIST_BOX_ROW(gtk_list_box_row_new());
+        gtk_list_box_row_set_header(row, GTK_WIDGET(label));
+
+        gtk_list_box_prepend(listBox, GTK_WIDGET(row));
+        //g_string_free(search_result_entry, TRUE);
     }
 }
 
